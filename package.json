@@ -1,5 +1,5 @@
 {
-  "name": "leaflet-mapillary-pane",
+  "name": "leaflet-pano",
   "version": "0.1.0",
   "description": "Leaflet Mapillary plugin",
   "main": "dist/leaflet-mapillary-pane.min.js",
@@ -61,10 +61,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/velocat/gpsies.git"
+    "url": "git+https://github.com/velocat/leafler-pano.git"
   },
   "bugs": {
-    "url": "https://github.com/velocat/gpsies/issues"
+    "url": "https://github.com/velocat/leafler-pano/issues"
   },
-  "homepage": "https://github.com/velocat/gpsies#readme"
+  "homepage": "https://github.com/velocat/leafler-pano#readme"
 }
