@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+src/*.min.js
+src/*.min.css
+dist/
+secrets.js
+stats.html
+.size-snapshot.json

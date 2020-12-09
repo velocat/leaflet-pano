@@ -1,0 +1,70 @@
+{
+  "name": "leaflet-mapillary-pane",
+  "version": "0.1.0",
+  "description": "Leaflet Mapillary plugin",
+  "main": "dist/leaflet-mapillary-pane.min.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js --watch",
+    "version": "npm run build && git add -A"
+  },
+  "author": "velocat <admin@velocat.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-classes": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-eslint": "^8.0.0",
+    "@rollup/plugin-html": "^0.2.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "eslint": "^7.14.0",
+    "html-rollup-plugin": "^1.0.2",
+    "interactjs": "^1.2.9",
+    "jshint": "^2.12.0",
+    "postcss-copy": "^7.1.0",
+    "postcss-import": "^12.x",
+    "postcss-normalize": "^9.0.0",
+    "rollup": "^2.33.3",
+    "rollup-plugin-auto-named-exports": "^1.0.0-beta.3",
+    "rollup-plugin-bundle-html-thomzz": "^1.1.0",
+    "rollup-plugin-external-globals": "^0.6.1",
+    "rollup-plugin-git-version": "^0.3.1",
+    "rollup-plugin-html2": "^2.0.0",
+    "rollup-plugin-import-css": "^1.1.2",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-size-snapshot": "^0.12.0",
+    "rollup-plugin-template-html": "0.0.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^4.2.0"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.12.5",
+    "@extra-object/is-entry": "^2.1.22",
+    "@types/html-minifier": "^3.5.3",
+    "core-js": "^3.8.0",
+    "leaflet": "^1.7.1",
+    "leaflet-easybutton": "^2.4.0",
+    "leaflet-i18n": "^0.3.1",
+    "mapillary-js": "^2.21.0",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velocat/gpsies.git"
+  },
+  "bugs": {
+    "url": "https://github.com/velocat/gpsies/issues"
+  },
+  "homepage": "https://github.com/velocat/gpsies#readme"
+}
