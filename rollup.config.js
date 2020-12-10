@@ -18,6 +18,10 @@ import postcssNormalize from 'postcss-normalize';
 import externalGlobals from 'rollup-plugin-external-globals';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import cleanup from 'rollup-plugin-cleanup';
+import pkg from './package.json';
+
 const production = !process.env.ROLLUP_WATCH;
 console.log('production:', production);
 
@@ -46,6 +50,7 @@ let output = {
 };
 
 let plugins = [
+	peerDepsExternal(), // Preferably set as first plugin.
 	alias({
 		entries: [
 			{ find: '@', replacement: path.resolve(RootDir, 'src') },
@@ -58,6 +63,7 @@ let plugins = [
 		jsnext: true,
 		main: true,
 		browser: true,
+		skip: ['leaflet', 'jquery']
 	}),
 	
 	commonJS({
@@ -105,6 +111,8 @@ let plugins = [
 		template: 'src/index.html',
 		fileName: 'index.html',
 		//inject: 'head',
+		//preload: ['lib'],
+		onlinePath: 'https://cdn.jsdelivr.net/npm/leaflet-pano@'+pkg.version+'/dist/',
 		externals: [
 			{type: 'css', file: 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css', pos: 'before' },
 			{type: 'js', file: 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', pos: 'before' },
@@ -132,7 +140,7 @@ export default [
 	{
 		input: input,
 		output: output,
-		plugins: (production) ? plugins : plugins.concat(serve()).concat(livereload('dist/')),
+		plugins: (production) ? plugins.concat(cleanup()) : plugins.concat(serve()).concat(livereload('dist/')).concat(cleanup()),
 		external: ['jquery, jquery-ui, leaflet']
 	},
 
@@ -142,7 +150,7 @@ export default [
 		output: Object.assign({}, output, {
 			file: 'dist/' + plugin_name + '.min.js'
 		}),
-		plugins: plugins.concat(terser()),
+		plugins: plugins.concat(terser()).concat(cleanup()),
 		external: ['jquery, jquery-ui, leaflet']
 	},
 
@@ -189,6 +197,7 @@ export default [
 				inject: false,
 				minimize: true,
 				plugins: [
+					postcssImport(),
 					postcssCopy({
 						basePath: ['node_modules', 'src/css'],
 						dest: 'dist',

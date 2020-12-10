@@ -36,11 +36,13 @@
     "rollup": "^2.33.3",
     "rollup-plugin-auto-named-exports": "^1.0.0-beta.3",
     "rollup-plugin-bundle-html-thomzz": "^1.1.0",
+    "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-external-globals": "^0.6.1",
     "rollup-plugin-git-version": "^0.3.1",
     "rollup-plugin-html2": "^2.0.0",
     "rollup-plugin-import-css": "^1.1.2",
     "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-serve": "^1.1.0",
     "rollup-plugin-size-snapshot": "^0.12.0",
@@ -58,6 +60,9 @@
     "leaflet-i18n": "^0.3.1",
     "mapillary-js": "^2.21.0",
     "regenerator-runtime": "^0.13.7"
+  },
+  "peerDependencies": {
+    "leaflet": "^1.0.0"
   },
   "repository": {
     "type": "git",
