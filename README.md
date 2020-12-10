@@ -14,7 +14,7 @@ Google Street View and Mapillari panoramas for leaflet maps.
 
 It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-pegman/)
 
-**Demo:** [Test Demo](https://github.com/velocat/leaflet-pano/blob/master/test/index.html "Test Demo")
+**Demo:** [Test Demo](https://velocat.github.io/leaflet-pano/ "Test Demo")
 
 ---
 
