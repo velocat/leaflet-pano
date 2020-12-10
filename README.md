@@ -1,6 +1,8 @@
 # Leaflet-pano ![Version](https://img.shields.io/github/package-json/v/velocat/leaflet-pano "Version")
 Google Street View and Mapillari panoramas for leaflet maps.
 
+(This is part of the Gpsies.ru track editor, but can be used as a standalone plugin)
+
 **Screenshots:**
 <p style="text-align: center;">
     <a href="#"><img src="https://github.com/velocat/leaflet-pano/blob/master/images/mappi.png" alt="Mapillary viewer" width="450px" height="250px" /></a>
@@ -18,78 +20,73 @@ It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-peg
 
 **Add the following libraries in head**
 ```html
-		<link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
+<!-- Librarys -->
+<link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
 
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-   		<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-  	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" />
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
-	integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-		<script src='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.js'></script>
-		<link href='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.css' rel='stylesheet' />	
+<script src='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.js'></script>
+<link href='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.css' rel='stylesheet' />	
 ```
 **Add this plugin in head**
 ```html
-	<!-- Main -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-pano/dist/leaflet-pano.css"/>
-		<script src="https://cdn.jsdelivr.net/npm/leaflet-pano/dist/leaflet-pano.min.js"></script>
+<!-- Main -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.1/dist/leaflet-pano.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.1/dist/leaflet-pano.min.js"></script>
 ```
 **Add this code in you page body**
 ```html
 <script>
-var pegmanOn, mapillaryOn; 
+	var pegmanOn, mapillaryOn; 
 
-var map = L.map('map').setView([55.598, 38.12], 14);
+	var map = L.map('map').setView([55.598, 38.12], 14);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
 
-/* Control Button */
-var Button =	new L.control.buttonpano({position: 'topleft'});
+	/* Control Button */
+	var Button =	new L.control.buttonpano({position: 'topleft'});
 
-var optionsPano = {
-	position: 'topleft', // position of control inside the map
-	theme: 'leaflet-pegman-v3-small', // or "leaflet-pegman-v3-small"
-	panoDiv: '#pano-div',
-	viewDiv: '#pano-div-dialog',
-	panoDivDialogUI: true,
-	panoDivDialogClass: 'pano-dialog',
-	button: Button,
-};
+	var optionsPano = {
+		position: 'topleft', // position of control inside the map
+		theme: 'leaflet-pegman-v3-small', // or "leaflet-pegman-v3-default"
+		panoDiv: '#pano-div',
+		viewDiv: '#pano-div-dialog',
+		panoDivDialogUI: true,
+		panoDivDialogClass: 'pano-dialog',
+		button: Button,
+		apiKey: '', // You Google API key
+		mapillaryKey: '' //Your own client ID from mapillary.com
+	};
 
-/*  Mapillary  */
-var mapillaryControl  = L.control.mapillary(optionsPano);
+	/*  Mapillary  */
+	var mapillaryControl  = L.control.mapillary(optionsPano);
 
-function viewMapillary(){
-	Button.togglePano('close');
-	pegmanControl.remove();
-	mapillaryControl.addTo(map);
-	pegmanOn = false;
-	mapillaryOn = true;
-} 
+	function viewMapillary(){
+		Button.togglePano('close');
+		pegmanControl.remove();
+		mapillaryControl.addTo(map);
+		pegmanOn = false;
+		mapillaryOn = true;
+	} 
 
-/*  Google Street Pano  */
-var pegmanControl = new L.control.pegman(optionsPano);
+	/*  Google Street View  */
+	var pegmanControl = new L.control.pegman(optionsPano);
 
-function viewStreetView(){
-	Button.togglePano('close');
-	pegmanControl.addTo(map);
-	mapillaryControl.remove();				
-	pegmanOn = true;
-	mapillaryOn = false; 
-}
+	function viewStreetView(){
+		Button.togglePano('close');
+		pegmanControl.addTo(map);
+		mapillaryControl.remove();				
+		pegmanOn = true;
+		mapillaryOn = false; 
+	}
 </script>
 ```
 
