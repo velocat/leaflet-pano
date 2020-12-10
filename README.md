@@ -1,14 +1,10 @@
-# Leaflet-pano
+# Leaflet-pano ![Version](https://img.shields.io/github/package-json/v/velocat/leaflet-pano "Version")
 Google Street View and Mapillari panoramas for leaflet maps.
 
 **Screenshots:**
 <p style="text-align: center;">
-    <a href="#"><img src="https://github.com/velocat/leaflet-pano/blob/master/images/mappi.png" alt="Mapillary viewer" /></a>
-</p>
-
-
-<p style="text-align:center;">
-    <a href="#"><img src="https://github.com/velocat/leaflet-pano/blob/master/images/google-street.png" alt="Google Street viewer" /></a>
+    <a href="#"><img src="https://github.com/velocat/leaflet-pano/blob/master/images/mappi.png" alt="Mapillary viewer" width="450px" height="250px" /></a>
+    <a href="#"><img src="https://github.com/velocat/leaflet-pano/blob/master/images/google-street.png" alt="Google Street viewer" width="350px" height="250px" /></a>
 </p>
 
 
