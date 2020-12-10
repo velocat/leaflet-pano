@@ -2,7 +2,7 @@
 Google Street View and Mapillari panoramas for leaflet maps.
 
 <p style="text-align:center;">
-    <a href="#"><img src="https://github.com/velocat/leaflet-pano/images/mappi.png" alt="Mapillary viewer" /></a>
+    <a href="#"><img src="https://github.com/velocat/leaflet-pano/blob/master/images/mappi.png" alt="Mapillary viewer" /></a>
 </p>
 
 It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-pegman/)
