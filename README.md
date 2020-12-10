@@ -16,24 +16,50 @@ It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-peg
 
 ### How to use:
 
+**Add the following libraries in head**
+```html
+		<link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
 
-> TODO...
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 
-**Example**
+   		<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+  	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  	crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" />
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
+	integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
+	crossorigin="anonymous"></script>
+
+		<script src='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.js'></script>
+		<link href='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.css' rel='stylesheet' />	
+```
+**Add this plugin in head**
+```html
+	<!-- Main -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-pano/dist/leaflet-pano.css"/>
+		<script src="https://cdn.jsdelivr.net/npm/leaflet-pano/dist/leaflet-pano.min.js"></script>
+```
+**Add this code in you page body**
 ```html
 <script>
 var pegmanOn, mapillaryOn; 
 
-let map = L.map('map').setView([55.598, 38.12], 14);
+var map = L.map('map').setView([55.598, 38.12], 14);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 /* Control Button */
-let Button =	new L.control.buttonpano({position: 'topleft'});
+var Button =	new L.control.buttonpano({position: 'topleft'});
 
-let optionsPano = {
+var optionsPano = {
 	position: 'topleft', // position of control inside the map
 	theme: 'leaflet-pegman-v3-small', // or "leaflet-pegman-v3-small"
 	panoDiv: '#pano-div',
@@ -44,7 +70,7 @@ let optionsPano = {
 };
 
 /*  Mapillary  */
-let mapillaryControl  = L.control.mapillary(optionsPano);
+var mapillaryControl  = L.control.mapillary(optionsPano);
 
 function viewMapillary(){
 	Button.togglePano('close');
@@ -71,7 +97,7 @@ function viewStreetView(){
 
 ---
 
-###Compatibile with:
+### Compatibile with:
 
 [![Leaflet 1.x compatible!](https://img.shields.io/badge/Leaflet-1.7.1-green)](http://leafletjs.com/reference.html)
 [![interactJS 1.2.8 compatibile!](https://img.shields.io/badge/interactJS-1.2.8-green)](https://interactjs.io/)
@@ -79,6 +105,10 @@ function viewStreetView(){
 [![gmaps 3.34 compatibile!](https://img.shields.io/badge/gmaps-3.34-green)](https://interactjs.io/)
 
 ---
+
+### TODO
+ - Automatic connection of necessary libraries if they were not previously connected in the header;
+ - Using without JQuery and Fontawesome (pure JS modal viewer and custom button style);
 
 ### License:
 ![License](https://img.shields.io/github/license/velocat/leaflet-pano "License")
