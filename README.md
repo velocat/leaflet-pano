@@ -19,7 +19,7 @@ It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-peg
 
 ---
 
-###Compatibile with:
+### Compatibile with:
 
 [![Leaflet 1.x compatible!](https://img.shields.io/badge/Leaflet-1.7.1-green)](http://leafletjs.com/reference.html)
 [![interactJS 1.2.8 compatibile!](https://img.shields.io/badge/interactJS-1.2.8-green)](https://interactjs.io/)
