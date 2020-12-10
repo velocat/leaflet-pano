@@ -1,6 +1,6 @@
 {
   "name": "leaflet-pano",
-  "version": "0.1.1",
+  "version": "0.1.1-beta",
   "description": "Leaflet Mapillary plugin",
   "main": "dist/leaflet-mapillary-pane.min.js",
   "module": "src/index.js",
