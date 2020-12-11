@@ -15,6 +15,10 @@ It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-peg
 **Demo:** [Test Demo](https://velocat.github.io/leaflet-pano/ "Test Demo")
 
 ---
+### Install with npm ![npm Version](https://img.shields.io/npm/v/leaflet-pano "npm Version")
+```
+npm install downloadjs
+```
 
 ### How to use:
 
