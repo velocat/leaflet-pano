@@ -34,7 +34,8 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 		},
 		button: null,
 		viewDiv: '#pano-div-dialog',
-		mapclick: true
+		mapclick: true,
+		loadImediality: true,
 	},
 
 	initialize: function(options) {
@@ -106,11 +107,12 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 		//this._container.addEventListener('mouseover', this.Utils.loadScripts.bind(this, false), { once: true });
 		
 		this._loadInteractHandlers();
-		this._loadGoogleHandlers(true);
+		this._loadGoogleHandlers(this.loadImediality);
 
 		L.DomEvent.on(document, 'mousemove', this.mouseMoveTracking, this);
 		L.DomEvent.on(document, 'keyup', this.keyUpTracking, this);
 
+		this._pegmanMarker.on('dragstart', this.onPegmanMarkerDraggStart, this);
 		this._pegmanMarker.on('dragend', this.onPegmanMarkerDragged, this);
 		this._map.on('click', this.onMapClick, this);
 		this._map.on('layeradd', this.onMapLayerAdd, this);
@@ -122,7 +124,6 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 	onRemove: function(map) {
 		if (this._googleStreetViewLayer) this._googleStreetViewLayer.remove();
 		if (this._pegmanMarker) this._pegmanMarker.remove();
-		//if (this.panodialog) this.panodialog.dialog('destroy');
 
 		L.DomUtil.remove(this._panoDiv);
 
@@ -279,6 +280,11 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 		this._updateClasses('dropzone-deactivated');
 	},
 
+	onPegmanMarkerDraggStart: function(e) {
+		this._pegmanMarkerCoords = this._pegmanMarker.getLatLng();
+		console.log(this._pegmanMarkerCoords);
+	},
+
 	onPegmanMarkerDragged: function(e) {
 		this._pegmanMarkerCoords = this._pegmanMarker.getLatLng();
 		this.findStreetViewData(this._pegmanMarkerCoords.lat, this._pegmanMarkerCoords.lng);
@@ -300,6 +306,9 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 	},
 	
 	onPanoramaChangeView: function() {
+		console.log(this._panorama);
+		console.log(this._pegmanMarker);
+
 		let pos = this._panorama.getPosition();
 		let pov = this._panorama.getPov();
 		if (!pos || !pov) return;

@@ -12,6 +12,13 @@
   },
   "author": "velocat <admin@velocat.ru>",
   "license": "MIT",
+  "keywords": [
+    "Leaflet",
+    "map",
+    "Mapillary",
+    "Google Street View",
+    "Pegman"
+  ],
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.12.1",

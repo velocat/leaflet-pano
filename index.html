@@ -68,7 +68,8 @@
 				panoDivDialogUI: true,
 				panoDivDialogClass: 'pano-dialog',
 				button: Button,
-				apiKey: '', // You Google API key
+				mapclick: true,
+				apiKey: '',//'AIzaSyAmPLxQBVCK9PCpOpaFxj1uPjvBi3Fb9tE', // You Google API key
 				mapillaryKey: '' //Your own client ID from mapillary.com
 			}
 
@@ -76,7 +77,7 @@
 			let mapillaryControl  = L.control.mapillary(optionsPano);
 
 			function viewMapillary(){
-				Button.togglePano('close')
+				Button.togglePano('close') 
 				pegmanControl.remove();
 				mapillaryControl.addTo(map);
 				pegmanOn = false;

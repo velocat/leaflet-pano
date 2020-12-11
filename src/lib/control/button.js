@@ -12,7 +12,6 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
 
   initialize: function(options){ 
     L.Control.prototype.initialize.call(this, options);
-    console.log(this.map);
     let _this = this;
     this.Btn = L.easyButton({ 
       states: [{
