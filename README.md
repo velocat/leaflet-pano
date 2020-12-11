@@ -17,7 +17,7 @@ It is based on the [Leaflet-Pegman plugin](https://github.com/Raruto/leaflet-peg
 ---
 ### Install with npm ![npm Version](https://img.shields.io/npm/v/leaflet-pano "npm Version")
 ```
-npm install downloadjs
+npm i leaflet-pano
 ```
 
 ### How to use:
