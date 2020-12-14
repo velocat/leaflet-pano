@@ -4,9 +4,9 @@
 		<meta charset='utf-8' />
 		<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Mapillary test</title>
+		<title>Leaflet Pano example</title>
 
-		<!-- Librarys -->
+		<!-- Libraries -->
 		<link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
 
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -47,9 +47,6 @@
 		<div id="map"></div>
 		<div id="pano-div-dialog"></div>
 		<script>
-			//var pegmanOn = mapillaryOn = false; 
-			const panoDiv = "#pano-div";
-
 			let map = L.map('map').setView([55.598, 38.12], 14);
 
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -58,13 +55,13 @@
 
 			let optionsPano = {
 				position: 'topleft', // position of control inside the map
-				theme: "leaflet-pegman-v3-small", // or "leaflet-pegman-v3-small"
-				panoDiv: "#pano-div",
-				viewDiv: "#pano-div-dialog",
+				theme: "leaflet-pegman-v3-small", //CSS, variant:"leaflet-pegman-v3-default"
+				panoDiv: "#pano-div", 
+				viewDiv: "#pano-div-dialog", //Viewer elem
 				panoDivDialogUI: true,
-				panoDivDialogClass: 'pano-dialog',
+				panoDivDialogClass: 'pano-dialog', //Class of viewer
 				mapclick: true,
-				apiKey: '',//'AIzaSyAmPLxQBVCK9PCpOpaFxj1uPjvBi3Fb9tE', // You Google API key
+				apiKey: '',// You Google API key
 				mapillaryKey: '' //Your own client ID from mapillary.com
 			}
 

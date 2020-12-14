@@ -40,7 +40,6 @@ class MapillaryLoader extends TiledDataLoader {
     }
 
     makeRequestData(dataTileCoords) {
-        console.log(dataTileCoords);
         return {
             url: this.getTileUrl(dataTileCoords),
             options: {

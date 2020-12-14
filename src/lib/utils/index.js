@@ -32,8 +32,6 @@ class Utils{
     if (this.caller._lazyLoaderAdded) return; //Pegman
     this.caller._lazyLoaderAdded = true;
 
-    console.log(toggleStreetView);
-
     this.loadJS(this.__interactURL, this.caller._loadInteractHandlers.bind(this.caller), typeof interact !== 'function');
 
     //if(toggleStreetView){

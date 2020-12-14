@@ -282,7 +282,6 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 
 	onPegmanMarkerDraggStart: function(e) {
 		this._pegmanMarkerCoords = this._pegmanMarker.getLatLng();
-		console.log(this._pegmanMarkerCoords);
 	},
 
 	onPegmanMarkerDragged: function(e) {
@@ -306,9 +305,6 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 	},
 	
 	onPanoramaChangeView: function() {
-		console.log(this._panorama);
-		console.log(this._pegmanMarker);
-
 		let pos = this._panorama.getPosition();
 		let pov = this._panorama.getPov();
 		if (!pos || !pov) return;

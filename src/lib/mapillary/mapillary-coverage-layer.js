@@ -12,7 +12,6 @@ const MapillaryCoverage = L.GridLayer.extend({
 	initialize: function(options) {
 		L.GridLayer.prototype.initialize.call(this, options);
         this.loader = new MapillaryLoader(this.options.url, 12);
-        console.log(this.loader);
 	},
 
 	onAdd: function(map) {

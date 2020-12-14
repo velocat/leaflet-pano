@@ -24,7 +24,7 @@ npm i leaflet-pano
 
 **Add the following libraries in head**
 ```html
-<!-- Librarys -->
+<!-- Libraries -->
 <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -40,15 +40,13 @@ npm i leaflet-pano
 ```
 **Add this plugin in head**
 ```html
-<!-- Main -->
+<!-- Main Pano script -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.1/dist/leaflet-pano.css"/>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.1/dist/leaflet-pano.min.js"></script>
 ```
 **Add this code in you page body**
 ```html
 <script>
-	var pegmanOn, mapillaryOn; 
-
 	var map = L.map('map').setView([55.598, 38.12], 14);
 
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
