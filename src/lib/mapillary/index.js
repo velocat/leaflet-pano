@@ -18,6 +18,7 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 		layerOptions: {opacity: 0.7, zIndex: 8},
 		enable: true,		
 		button: null,
+		mapclick: false,
 	},  
 
 	initialize: function(options){
@@ -77,6 +78,10 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 		this._viewDiv = document.querySelector(this.options.viewDiv);
 		this._panoDivView = L.DomUtil.create('div', '', this._viewDiv);
 		this._panoDivView.id = 'pano-div-mapi';
+
+		this._loader = L.DomUtil.create('div', 'loader'); 
+		this._loader.id = 'loader-2';
+		this._loader.innerHTML = '<span></span><span></span><span></span>';
 		
 		L.DomUtil.addClass(this._map._container, this.options.theme);
 
@@ -95,7 +100,7 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 		this._pegmanMarker.on('dragend', this.onPegmanMarkerDragged, this);
 
 		this.enableControl();
-		this.fire('add_pegman');
+		this.fire('add_pegman_mapi');
 		return this._container;   
 	},
 
@@ -315,6 +320,7 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 	},
 
 	onMapClick: function(e) {
+		if(this.controlEnabled && this.options.mapclick)
 		this.mly.moveCloseTo(e.latlng.lat, e.latlng.lng);
 	},
 
@@ -535,6 +541,7 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 	},
 
 	findMapillaryViewData: function(lat, lng) {
+		let _this = this;
 		if (!this._pegmanMarker._map && this._map) {
 			this._pegmanMarkerCoords = L.latLng(lat, lng);
 			return this.pegmanAdd();
@@ -543,8 +550,8 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 		if(!this.mly.isNavigable) this.activate();
 		this.mly.moveCloseTo(lat, lng)
 			.then(
-				function(node) { /*console.log(node.key);*/ },
-				function(error) { /*console.error(error);*/ }
+				function(node) { _this._loader.style.display = 'none';/* console.log(node.key);*/ },
+				function(error) { _this._loader.style.display = 'block';/*console.error(error);*/ }
 			);
 
 		this.setMapillaryView();

@@ -34,7 +34,7 @@ export const Pegman = L.Control.Pegman = L.Control.extend({
 		},
 		button: null,
 		viewDiv: '#pano-div-dialog',
-		mapclick: true,
+		mapclick: false,
 		loadImediality: true,
 	},
 

@@ -8,8 +8,9 @@ Mapi.addInitHook(function(){
 
 	_this.panodialog = createViewDialog();
 
-	$(_this).on('add_pegman', function() {
+	$(_this).on('add_pegman_mapi', function() {
 		$(_this._panoDivView).css({'width':'100%', 'height':'100%'});
+		console.log('add_pegman_mapi');
 		_divDialog.append(_this._panoDivView);
   });
 
@@ -37,6 +38,7 @@ Mapi.addInitHook(function(){
 			position: {my:'left top', at:'left+50 top+20', of:window },
 			open: function() {
 				_this.activate();
+				_divDialog.append(_this._loader);
 			},
 			close: function() {
 				_this.deactivate();
