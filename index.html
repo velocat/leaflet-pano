@@ -47,8 +47,7 @@
 		<div id="map"></div>
 		<div id="pano-div-dialog"></div>
 		<script>
-			var panoopened = pegmanOn = mapillaryOn = false; 
-			var panoControlDiv;
+			//var pegmanOn = mapillaryOn = false; 
 			const panoDiv = "#pano-div";
 
 			let map = L.map('map').setView([55.598, 38.12], 14);
@@ -57,9 +56,6 @@
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 
-			/* Control Button */
-			let Button =	new L.control.buttonpano({position: 'topleft'});
-
 			let optionsPano = {
 				position: 'topleft', // position of control inside the map
 				theme: "leaflet-pegman-v3-small", // or "leaflet-pegman-v3-small"
@@ -67,33 +63,13 @@
 				viewDiv: "#pano-div-dialog",
 				panoDivDialogUI: true,
 				panoDivDialogClass: 'pano-dialog',
-				button: Button,
 				mapclick: true,
 				apiKey: '',//'AIzaSyAmPLxQBVCK9PCpOpaFxj1uPjvBi3Fb9tE', // You Google API key
 				mapillaryKey: '' //Your own client ID from mapillary.com
 			}
 
-			/*  Mapillary  */
-			let mapillaryControl  = L.control.mapillary(optionsPano);
+			let Pano = L.control.pano(optionsPano);
 
-			function viewMapillary(){
-				Button.togglePano('close') 
-				pegmanControl.remove();
-				mapillaryControl.addTo(map);
-				pegmanOn = false;
-				mapillaryOn = true;
-			} 
-
-			/*  Google Street Pano  */
-			var pegmanControl = new L.control.pegman(optionsPano);
-
-			function viewStreetView(){
-				Button.togglePano('close');
-				pegmanControl.addTo(map);
-				mapillaryControl.remove();				
-				pegmanOn = true;
-				mapillaryOn = false; 
-			}
 
 		</script>
 	</body>

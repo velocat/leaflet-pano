@@ -28,8 +28,8 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
         onClick: function(control) {
           _this.togglePano('close');
           _this.closeDialogs();
-          mapillaryControl.remove();
-          pegmanControl.remove();
+          _this.mapillaryControl.remove();
+          _this.pegmanControl.remove();
           control.state('add-pano');
         },
         title: 'remove pano'
@@ -47,15 +47,15 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
   },
   
   onRemove: function(map) {
-    _this.togglePano('close');
-    _this.closeDialogs();
-    mapillaryControl.remove();
-    pegmanControl.remove();
+    this.togglePano('close');
+    this.closeDialogs();
+    this.mapillaryControl.remove();
+    this.pegmanControl.remove();
   },
 
   closeDialogs: function(){
-    pegmanControl.panodialog.dialog('close');
-    mapillaryControl.panodialog.dialog('close');
+    this.pegmanControl.panodialog.dialog('close');
+    this.mapillaryControl.panodialog.dialog('close');
   },
   
   togglePano: function(action){
@@ -63,18 +63,18 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
     if(action){
       if(action === 'open'){
         this.panoControlDiv.addTo(map);
-        panoopened = true;
+        this.panoopened = true;
       }else{
         this.panoControlDiv.remove();
-        panoopened = false;
+        this.panoopened = false;
       }
     }
-    else if(!panoopened){
+    else if(!this.panoopened){
       this.panoControlDiv.addTo(map);
-      panoopened = true;
+      this.panoopened = true;
     }else{
       this.panoControlDiv.remove();
-      panoopened = false;
+      this.panoopened = false;
     }
   },
 
@@ -85,8 +85,8 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
       position: 'topleft',
       content: '<div class="control-custom-head"><i class="fa fa-lg fa-male orange control-custom-head-icon"></i><b class="ml-10">Choice Panorama:</b></div>'+
             '<div class="control-custom-content">'+
-            '<div onclick="viewStreetView();"><input type="radio" class="control-custom-item" name="pano" id="setStreetView" '+( _this.pegmanOn ? ' checked ' : '' )+'> <label for="setStreetView"> "Google"</label></div>'+
-            '<div onclick="viewMapillary();"><input type="radio" class="control-custom-item" name="pano" id="setMapinary"'+( _this.mapillaryOn ? ' checked ' : '' )+'> <label for="setMapinary"> "Mapillary"</label></div>'+
+            '<div onclick="Pano.viewStreetView();"><input type="radio" class="control-custom-item" name="pano" id="setStreetView" '+( _this.pegmanOn ? ' checked ' : '' )+'> <label for="setStreetView"> "Google"</label></div>'+
+            '<div onclick="Pano.viewMapillary();"><input type="radio" class="control-custom-item" name="pano" id="setMapinary"'+( _this.mapillaryOn ? ' checked ' : '' )+'> <label for="setMapinary"> "Mapillary"</label></div>'+
             '</div>',
       classes: 'control-custom',
       style:
