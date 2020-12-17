@@ -44,7 +44,10 @@ L.Control.Pano = L.Control.extend({
     this._map = map;	
   },
   onRemove: function(map) {
-    
+    this.Button.Btn.remove();
+  },
+  init: function(map){
+    this.Button.Btn.addTo(map);
   },
   viewMapillary: function(){
     this.Button.togglePano('close');

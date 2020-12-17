@@ -35,6 +35,9 @@ npm i leaflet-pano
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css" />
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
 <script src='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.js'></script>
 <link href='https://unpkg.com/mapillary-js@2.18.0/dist/mapillary.min.css' rel='stylesheet' />	
 ```
@@ -46,6 +49,8 @@ npm i leaflet-pano
 ```
 **Add this code in you page body**
 ```html
+<div id="map"></div>
+<div id="pano-div-dialog"></div>
 <script>
 	var map = L.map('map').setView([55.598, 38.12], 14);
 
@@ -56,16 +61,14 @@ npm i leaflet-pano
 	var optionsPano = {
 		position: 'topleft', // position of control inside the map
 		theme: "leaflet-pegman-v3-small", // or "leaflet-pegman-v3-small"
-		panoDiv: "#pano-div",
 		viewDiv: "#pano-div-dialog",
-		panoDivDialogUI: true,
 		panoDivDialogClass: 'pano-dialog',
 		mapclick: true,
 		apiKey: '', // You Google API key
 		mapillaryKey: '' //Your own client ID from mapillary.com
 	}
 
-	var Pano = L.control.pano(optionsPano);
+	var Pano = L.control.pano(optionsPano).init(map);
 </script>
 ```
 

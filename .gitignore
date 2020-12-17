@@ -6,3 +6,4 @@ dist/
 secrets.js
 stats.html
 .size-snapshot.json
+.vscode

@@ -1,5 +1,5 @@
 //import L from 'leaflet';
-import 'leaflet-easybutton';
+//import 'leaflet-easybutton';
 import {Custom} from '~/control/custom';
 
 export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
@@ -7,7 +7,7 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
     panoopened: false,
     pegmanOn: false,
     mapillaryOn: false,
-    position: 'topleft', 
+    position: 'bottomright', 
   },
 
   initialize: function(options){ 
@@ -33,17 +33,20 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
           control.state('add-pano');
         },
         title: 'remove pano'
-      }]
+      }],
+      position: this.options.position,
+      id: 'pano-btn'
     });
 
-    this._toolsButtonsBar = L.easyBar([this.Btn], {
+    /*this._toolsButtonsBar = L.easyBar([this.Btn], {
       id: 'toolsbar',
       position: this.options.position,
-    }).addTo(map);
+    }).addTo(map);*/
   },
 
   onAdd: function(map){
-    return this._toolsButtonsBar.container;
+    this._map = map;
+    return this.Btn.container; //this._toolsButtonsBar.container;
   },
   
   onRemove: function(map) {
@@ -80,23 +83,36 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
 
   _createPanoControl: function (){
     let _this = this;
-    let offsetTop = document.getElementById('toolsbar').offsetTop - 10;
+    console.log(this.Btn);
+
+    //let mapHeight = this.Btn._map.getSize().y;
+    //let offsetTop = this.Btn._container.parentNode.offsetTop; //document.getElementById('pano-btn').offsetTop - 10; 
+    const divHeight = 91; //TODO calculate height
+
+    let offsetTop = (this.options.position == 'bottomleft' || this.options.position == 'bottomright')
+      ? this.Btn._container.offsetTop + this.Btn._container.offsetHeight - divHeight
+      : this.Btn._container.offsetTop-10; 
+
+    const mainstyle = { 
+      position: 'absolute',
+      top: offsetTop+'px',
+      width: '200px',
+      cursor: 'pointer'
+    };
+    const styled = (this.options.position == 'bottomleft' || this.options.position == 'topleft')
+      ? { left: '50px' }
+      : { right: '50px' };
+    const style = { ...mainstyle, ...styled };
+    
     let panoControlDiv = new Custom({
-      position: 'topleft',
+      position: _this.options.position,
       content: '<div class="control-custom-head"><i class="fa fa-lg fa-male orange control-custom-head-icon"></i><b class="ml-10">Choice Panorama:</b></div>'+
             '<div class="control-custom-content">'+
             '<div onclick="Pano.viewStreetView();"><input type="radio" class="control-custom-item" name="pano" id="setStreetView" '+( _this.pegmanOn ? ' checked ' : '' )+'> <label for="setStreetView"> "Google"</label></div>'+
             '<div onclick="Pano.viewMapillary();"><input type="radio" class="control-custom-item" name="pano" id="setMapinary"'+( _this.mapillaryOn ? ' checked ' : '' )+'> <label for="setMapinary"> "Mapillary"</label></div>'+
             '</div>',
       classes: 'control-custom',
-      style:
-      {
-        position: 'absolute',
-        left: '50px',
-        top: offsetTop+'px',
-        width: '200px',
-        cursor: 'pointer'
-      },
+      style: style,
     });	
 
     return panoControlDiv;
