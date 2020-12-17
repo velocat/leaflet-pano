@@ -44,8 +44,8 @@ npm i leaflet-pano
 **Add this plugin in head**
 ```html
 <!-- Main Pano script -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.1/dist/leaflet-pano.css"/>
-<script src="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.1/dist/leaflet-pano.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.5-beta/dist/leaflet-pano.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-pano@0.1.5-beta/dist/leaflet-pano.min.js"></script>
 ```
 **Add this code in you page body**
 ```html
