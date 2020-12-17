@@ -2,6 +2,7 @@ import 'leaflet-i18n';
 import {Mapi} from '~/mapillary';
 
 Mapi.addInitHook(function(){
+	const $ = window.$;
 	let _this = this;
 	let _divDialog = this._viewDiv || L.DomUtil.create('div', '');
 	let classStart = _this.options.panoDivDialogClass || 'pano-dialog';

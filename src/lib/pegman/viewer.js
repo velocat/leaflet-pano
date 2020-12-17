@@ -3,6 +3,8 @@ import {Pegman} from '~/pegman';
 
 Pegman.addInitHook(function(){
 	//if (!this.options.panoDivDialogUI) return;
+	const $ = window.$;
+	console.log($);
 	let _this = this;
 	let _divDialog = this._viewDiv || L.DomUtil.create('div', '');
   
