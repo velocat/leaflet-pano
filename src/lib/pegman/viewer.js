@@ -1,10 +1,12 @@
 import 'leaflet-i18n';
 import {Pegman} from '~/pegman';
 
+
+
 Pegman.addInitHook(function(){
 	//if (!this.options.panoDivDialogUI) return;
-	const $ = window.$;
-	console.log($);
+	jQuery.noConflict();
+
 	let _this = this;
 	let _divDialog = this._viewDiv || L.DomUtil.create('div', '');
   
@@ -13,23 +15,24 @@ Pegman.addInitHook(function(){
 	//let classImportant = _this.options.panoDivDialogClass2 || 'pano-dialog-imp';
 	_this.panodialog = createViewDialog();
 	
-	$(_this).on('add_pegman', function() {
-		$(_this._panoDiv).css({'width':'auto', 'height':'auto'});
+	
+	jQuery(_this).on('add_pegman', function() {
+		jQuery(_this._panoDiv).css({'width':'auto', 'height':'auto'});
 		_divDialog.append(_this._panoDiv);
   });
 
-	$(_this).on('open_panorama', function() {
+	jQuery(_this).on('open_panorama', function() {
     _this.panodialog.dialog('open');
 	});
 			
-	$(_this).on('close_panorama', function() {
+	jQuery(_this).on('close_panorama', function() {
     _this.panodialog.dialog('close');
 	});
 
 	function createViewDialog(){
 		if(_this.panodialog) return _this.panodialog;
 		
-		let panodialog = $(_divDialog).dialog({
+		let panodialog = jQuery(_divDialog).dialog({
 			title: L._('Google Street View'),
 			dialogClass: classStart,
 			autoOpen: false,
