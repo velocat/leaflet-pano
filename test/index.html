@@ -67,7 +67,8 @@
 				mapillaryKey: '' //Your own client ID from mapillary.com
 			}
 
-			let Pano = L.control.pano(optionsPano).init(map);
+			let Pano = L.control.pano(optionsPano);
+			Pano.init(map);
 
 		</script>
 	</body>
