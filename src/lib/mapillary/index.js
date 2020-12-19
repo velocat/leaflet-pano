@@ -104,7 +104,7 @@ export const Mapi = L.Control.Mapi = L.Control.extend({
 		return this._container;   
 	},
 
-	onRemove: function() {
+	onRemove: function(map) {
 		if (this._pegmanMarker) this._pegmanMarker.remove();
 		if (this.controlEnabled) this.disableControl();		
 

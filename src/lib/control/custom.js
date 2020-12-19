@@ -7,11 +7,13 @@ export const Custom = L.Control.Custom = L.Control.extend({
 		position: 'topright',
 		id: '',
 		title: '',
-		classes: '',
-		content: '',
+    classes: '',
+    html: '', //text
+		content: '', //object
 		style: {},
 		datas: {},
-		events: {},
+    events: {},
+    contentObj: {},
   },
   container: null,
   onAdd: function() {
@@ -19,7 +21,8 @@ export const Custom = L.Control.Custom = L.Control.extend({
     this.container.id = this.options.id;
     this.container.title = this.options.title;
     this.container.className = this.options.classes;
-    this.container.innerHTML = this.options.content;
+    this.container.innerHTML = this.options.html;
+    if(this.options.content) this.container.appendChild(this.options.content);
 
     for (var option in this.options.style){
       this.container.style[option] = this.options.style[option];

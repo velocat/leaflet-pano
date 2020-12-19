@@ -30,6 +30,7 @@ import {ButtonPano} from '~/control/button';
 
 
 L.Control.Pano = L.Control.extend({
+  
   initialize: function(options) {
     L.Util.setOptions(this, options);
     this.pegmanOn = false;
@@ -40,29 +41,45 @@ L.Control.Pano = L.Control.extend({
     this.pegmanControl = this.Button.pegmanControl = new Pegman(this.options);
     this.mapillaryControl = this.Button.mapillaryControl = new Mapi(this.options);
   },
+
   onAdd: function(map) {
     this._map = map;	
   },
+  
   onRemove: function(map) {
     this.Button.Btn.remove();
   },
+  
   init: function(map){
+    let _this = this;
     this.Button.Btn.addTo(map);
+    
+    this.Button.on('toggle_google', function() {
+      _this.viewStreetView(map);
+    });
+
+    this.Button.on('toggle_mapi', function() {
+      _this.viewMapillary(map);
+    });
+
   },
-  viewMapillary: function(){
+  
+  viewMapillary: function(map){
     this.Button.togglePano('close');
-    this.pegmanControl.remove();
+    this.pegmanControl.remove(map);
     this.mapillaryControl.addTo(map);
     this.pegmanOn = false;
     this.mapillaryOn = true;
   },
-  viewStreetView: function(){
+  
+  viewStreetView: function(map){
     this.Button.togglePano('close');
     this.pegmanControl.addTo(map);
-    this.mapillaryControl.remove();				
+    this.mapillaryControl.remove(map);				
     this.pegmanOn = true;
     this.mapillaryOn = false; 
   }
+
 });
 
 //L.control.pano = (options) => new Pano(options);
