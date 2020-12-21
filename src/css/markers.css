@@ -145,6 +145,7 @@
 .leaflet-pegman-v3-default .pegman-control {
   width: 40px;
   height: 40px;
+  margin-top: 1px;
 }
 
 .leaflet-pegman-v3-default .pegman-control .pegman-button {
@@ -166,9 +167,35 @@
 }
 
 /*Pegman v3 small theme*/
-.leaflet-pegman-v3-small .pegman-control {
+.leaflet-pegman-v3-medium .pegman-control {
   width: 34px;
   height: 34px;
+  margin-top: 1px;
+}
+
+.leaflet-pegman-v3-medium .pegman-control .pegman-button {
+  background-image: url("img/pegman_v3/runway-1x.png");
+  background-position: 2px -27px;
+  background-size: 25px;
+}
+
+.leaflet-pegman-v3-medium .pegman-control.streetview-layer-active .pegman-button {
+  background-position: 2px 0;
+}
+
+.leaflet-pegman-v3-medium .pegman-control:hover .pegman-button {
+  background-position: 2px -79px;
+}
+
+.leaflet-pegman-v3-medium .pegman-control.dragging .pegman-button {
+  background-position: 2px -53px;
+}
+
+/*Pegman v3 small theme*/
+.leaflet-pegman-v3-small .pegman-control {
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
 }
 
 .leaflet-pegman-v3-small .pegman-control .pegman-button {

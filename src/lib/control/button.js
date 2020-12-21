@@ -39,9 +39,6 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
       position: this.options.position,
       id: 'pano-btn'
     });
-
-    
-
     /*this._toolsButtonsBar = L.easyBar([this.Btn], {
       id: 'toolsbar',
       position: this.options.position,
@@ -133,7 +130,7 @@ export const ButtonPano = L.Control.ButtonPano = L.Control.extend({
   
   _fireEv: function(act){
     this.fire(act);
-    console.log(act);
+    //console.log(act);
   },
 
 });
